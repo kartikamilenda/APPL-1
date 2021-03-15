@@ -1,2 +1,2 @@
-# design-patterns
-Design pattern task for programming techniques
+# APPL
+Berisikan tugas APPL 1
