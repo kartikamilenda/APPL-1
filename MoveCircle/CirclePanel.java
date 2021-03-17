@@ -52,6 +52,11 @@ public class CirclePanel extends JPanel {
     black.addActionListener(new ColorListener(Color.black));
     green.addActionListener(new ColorListener(Color.green));
     
+    // Set the background
+    blue.setBackground(Color.blue);
+    red.setBackground(Color.red);
+    black.setBackground(Color.black);
+    green.setBackground(Color.green);
     
     // Need a panel to put the buttons on or they'll be on 
     // top of each other. 
@@ -99,10 +104,17 @@ public class CirclePanel extends JPanel {
             repaint(); 
         } 
     } 
- private class ActionListener implements ActionListener
+ private class ColorListener implements ActionListener
  {
-     private Colors color;
+     private Color colors;
      
+     public ColorListener(Color colors) {
+     this.colors = colors;
+     }
+     
+     public void actionPerformed(ActionEvent e){
+         
+     }
      
  }
 }
