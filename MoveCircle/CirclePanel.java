@@ -14,7 +14,8 @@ import java.awt.event.*;
 public class CirclePanel extends JPanel {
     private final int CIRCLE_SIZE = 50; 
     private int x,y; 
-    private Color c; 
+    private Color c;
+    JButton choose  = new JButton("choose color");
  //--------------------------------------------------------------- 
  // Set up circle and buttons to move it. 
  //--------------------------------------------------------------- 
@@ -49,6 +50,7 @@ public class CirclePanel extends JPanel {
     // Add Listeners to the color button
     blue.addActionListener(new ColorListener(Color.blue));
     red.addActionListener(new ColorListener(Color.red));
+    choose.addActionListener(new ColorListener (null));
     black.addActionListener(new ColorListener(Color.black));
     green.addActionListener(new ColorListener(Color.green));
     
@@ -68,6 +70,17 @@ public class CirclePanel extends JPanel {
     
     // Add the button panel to the bottom of the main panel 
     this.add(buttonPanel, "South"); 
+    
+    JPanel colorbuttonPanel = new JPanel(); 
+    colorbuttonPanel.add(blue); 
+    colorbuttonPanel.add(red); 
+    colorbuttonPanel.add(choose);
+    colorbuttonPanel.add(black); 
+    colorbuttonPanel.add(green); 
+    
+    // Add the button panel to the bottom of the main panel 
+    this.add(colorbuttonPanel, "North"); 
+    
   } 
  
  //--------------------------------------------------------------- 
@@ -106,15 +119,17 @@ public class CirclePanel extends JPanel {
     } 
  private class ColorListener implements ActionListener
  {
-     private Color colors;
-     
-     public ColorListener(Color colors) {
-     this.colors = colors;
-     }
-     
-     public void actionPerformed(ActionEvent e){
-         
-     }
-     
+     private Color color;
+  public ColorListener (Color color){
+      this.color = color;
+  }
+   public void actionPerformed(ActionEvent e){
+       if(this.color == null){
+           c = JColorChooser.showDialog(choose,"Choose Color",c);
+       }else{
+        c = this.color;   
+       }
+       repaint();
+   }
  }
 }
