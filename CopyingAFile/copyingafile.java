@@ -14,23 +14,27 @@ import java.util.Scanner;
  * @author asus
  */
 public class copyingafile {
-    
     public static void main(String[] args){
+        copyingafile();
+    }
+    
+    public static void copyingafile(){
         Scanner newFile = new Scanner(System.in);
         System.out.print("Insert your file : ");
         String inputFile = newFile.next();
 
         File file = new File(inputFile);
-        try{
-            Scanner text = new Scanner(file);
-            String textfile;
-            while(text.hasNextLine()){
-            textfile = text.nextLine();
-            System.out.println(textfile);
-            }
-            text.close();
-        } catch(FileNotFoundException e){
-           System.out.println(inputFile + " File Not Found");
-         }
-    } 
-}
+          try{
+              Scanner text = new Scanner(file);
+              String textfile;
+              while(text.hasNextLine()){
+              textfile = text.nextLine();
+              System.out.println(textfile);
+              }
+              text.close();
+          } catch(FileNotFoundException e){
+             System.out.println(inputFile + " File Not Found");
+             copyingafile();
+           }
+      } 
+}     
