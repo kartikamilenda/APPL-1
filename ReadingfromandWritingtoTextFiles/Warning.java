@@ -46,12 +46,15 @@ public class Warning {
     qualityPts =    Double.parseDouble(line.split("\\s+")[2]);
     gpa = qualityPts/creditHrs;
     if(gpa < 1.5 && creditHrs < 30){
-        outFile.printf(line);
+        outFile.printf(line+"\n");
     }else if (gpa < 1.75 && creditHrs < 60){
-        outFile.printf(line);
+        outFile.printf(line + "\n");
+    } else if (qualityPts < 2.0){
+        outFile.printf(line+"\n");
     }
  } 
- 
+    outFile.close();
+    newFile.close();
  // Close output file 
  } 
  catch (FileNotFoundException exception) 
