@@ -49,7 +49,7 @@ public class Warning {
         outFile.printf(line+"\n");
     }else if (gpa < 1.75 && creditHrs < 60){
         outFile.printf(line + "\n");
-    } else if (qualityPts < 2.0){
+    } else if (gpa < 2.0){
         outFile.printf(line+"\n");
     }
  } 
