@@ -31,18 +31,27 @@ public class Warning {
   PrintWriter outFile = new PrintWriter(outputName);// Set up the output file stream 
   // Print a header to the output file
  
-  
     outFile.println (); 
     outFile.println ("Students on Academic Warning"); 
     outFile.println (); 
+    
  // Process the input file, one token at a time 
- 
- //while () 
+ while (newFile.hasNext()) 
  { 
     // Get the credit hours and quality points and 
     // determine if the student is on warning. If so, 
-    // write the student data to the output file. 
+    // write the student data to the output file.
+    line = newFile.nextLine();
+    creditHrs = Integer.parseInt(line.split("\\s+")[1]);
+    qualityPts =    Double.parseDouble(line.split("\\s+")[2]);
+    gpa = qualityPts/creditHrs;
+    if(gpa < 1.5 && creditHrs < 30){
+        outFile.printf(line);
+    }else if (gpa < 1.75 && creditHrs < 60){
+        outFile.printf(line);
+    }
  } 
+ 
  // Close output file 
  } 
  catch (FileNotFoundException exception) 
