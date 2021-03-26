@@ -95,7 +95,10 @@ import java.awt.event.*;
     { 
         x += dx; 
         y += dy;
-
+        left.setEnabled(x > 0);
+        right.setEnabled(x < 0);
+        up.setEnabled(y > 0);
+        down.setEnabled(y < 0);
         repaint(); 
     } 
    } 
