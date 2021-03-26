@@ -15,12 +15,16 @@ import java.awt.event.*;
 { 
  private final int CIRCLE_SIZE = 50; 
  private int x,y; 
- private Color c; 
+ private Color c;
+ private JButton left,right,up,down;
+
+ 
  //--------------------------------------------------------------- 
  // Set up circle and buttons to move it. 
  //--------------------------------------------------------------- 
  public CirclePanel(int width, int height) 
  { 
+
  // Set coordinates so circle starts in middle 
         x = (width/2)-(CIRCLE_SIZE/2); 
         y = (height/2)-(CIRCLE_SIZE/2); 
@@ -28,16 +32,26 @@ import java.awt.event.*;
  // Need a border layout to get the buttons on the bottom 
         this.setLayout(new BorderLayout()); 
  // Create buttons to move the circle 
-        JButton left = new JButton("Left"); 
-        JButton right = new JButton("Right"); 
-        JButton up = new JButton("Up"); 
-        JButton down = new JButton("Down"); 
-        
+         left = new JButton("Left"); 
+         right = new JButton("Right"); 
+         up = new JButton("Up"); 
+         down = new JButton("Down"); 
+ 
  // Add listeners to the buttons 
         left.addActionListener(new MoveListener(-20,0)); 
         right.addActionListener(new MoveListener(20,0)); 
         up.addActionListener(new MoveListener(0,-20)); 
-        down.addActionListener(new MoveListener(0,20)); 
+        down.addActionListener(new MoveListener(0,20));
+ // set Add mnemonics
+        left.setMnemonic(KeyEvent.VK_L);
+        right.setMnemonic(KeyEvent.VK_R);
+        up.setMnemonic(KeyEvent.VK_U);
+        down.setMnemonic(KeyEvent.VK_D);
+// set Tool Tips
+        left.setToolTipText("Move to the left about 20");
+        right.setToolTipText("Move to the right about 20");
+        up.setToolTipText("Move to up about 20");
+        down.setToolTipText("Move to down about 20");
  // Need a panel to put the buttons on or they'll be on 
  // top of each other. 
         JPanel buttonPanel = new JPanel(); 
@@ -46,7 +60,9 @@ import java.awt.event.*;
         buttonPanel.add(up); 
         buttonPanel.add(down); 
  // Add the button panel to the bottom of the main panel 
-        this.add(buttonPanel, "South"); 
+        this.add(buttonPanel, "South");
+ 
+        
  } 
  //--------------------------------------------------------------- 
  // Draw circle on CirclePanel 
@@ -78,7 +94,8 @@ import java.awt.event.*;
     public void actionPerformed(ActionEvent e) 
     { 
         x += dx; 
-        y += dy; 
+        y += dy;
+
         repaint(); 
     } 
    } 
