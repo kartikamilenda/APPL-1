@@ -12,10 +12,11 @@ import javax.swing.*;
  *
  * @author asus
  */
-public class PrimePanel {
+public class PrimePanel extends JPanel{
  private JTextField number; 
  private JButton computeButton; 
- private JTextArea primeList; 
+ private JTextArea primeList;
+ private JScrollPane scrollprimeList;
  // ---------------------------------------------------------- 
  // Sets up a panel with a heading, a labeled text field 
  // for the user to enter an integer, a button to trigger 
@@ -31,14 +32,18 @@ public class PrimePanel {
     computeButton = new JButton ("Click to see all primes up to your number!"); 
     primeList = new JTextArea (10, 30); 
     computeButton.addActionListener(new ButtonListener()); 
+    scrollprimeList = new JScrollPane(primeList);
+    //scrollprimeList.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    scrollprimeList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     // Add the components to the panel 
     add (heading); 
     add (inputLabel); 
     add (number); 
     add (computeButton); 
-    add (primeList); 
+    //add (primeList);
+    add (scrollprimeList);
     setPreferredSize (new Dimension (400, 320)); 
-    setBackground (Color.yellow); 
+    setBackground (Color.blue); 
  } 
  // ***************************************************************** 
  // Represents a listener for the click of the button. 
@@ -51,6 +56,7 @@ public class PrimePanel {
  // ----------------------------------------------------------- 
  public void actionPerformed (ActionEvent event) 
  { 
+    try{
     String textNum = number.getText(); 
     int num = Integer.parseInt (textNum); 
     String ans = "";
@@ -65,7 +71,7 @@ public class PrimePanel {
         { 
             boolean foundDivisor = false; 
             int j = 3; 
-                while (j < i && !foundDivisor) 
+                while (j < Math.sqrt(i)  && !foundDivisor) 
             { 
                 if (i % j == 0) 
                 foundDivisor = true; 
@@ -81,8 +87,11 @@ public class PrimePanel {
                 ans += "\n"; 
             } 
         } 
-    } 
-        primeList.setText (ans); 
+    }
+        primeList.setText (ans);
+    } catch (NumberFormatException e){
+        primeList.setText ("Your input must integer");
+    }
    }
  }
 }

@@ -15,6 +15,7 @@ public class Primes {
    { 
         JFrame frame = new JFrame("Primes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         PrimePanel primePanel = new PrimePanel();
         frame.getContentPane().add(primePanel);
         frame.pack();
