@@ -17,14 +17,15 @@ import java.awt.event.*;
  private int x,y; 
  private Color c;
  private JButton left,right,up,down;
-
+ private int xmax,ymax;
  
  //--------------------------------------------------------------- 
  // Set up circle and buttons to move it. 
  //--------------------------------------------------------------- 
  public CirclePanel(int width, int height) 
  { 
-
+        xmax = width;
+        ymax = height;
  // Set coordinates so circle starts in middle 
         x = (width/2)-(CIRCLE_SIZE/2); 
         y = (height/2)-(CIRCLE_SIZE/2); 
@@ -96,9 +97,9 @@ import java.awt.event.*;
         x += dx; 
         y += dy;
         left.setEnabled(x > 0);
-        right.setEnabled(x < 0);
+        right.setEnabled(x < xmax - 70);
         up.setEnabled(y > 0);
-        down.setEnabled(y < 0);
+        down.setEnabled(y < ymax - 120);
         repaint(); 
     } 
    } 
