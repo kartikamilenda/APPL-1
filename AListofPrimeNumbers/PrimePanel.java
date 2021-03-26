@@ -79,7 +79,7 @@ public class PrimePanel extends JPanel{
                 j++; 
             } 
     // Add i to the list if it is prime 
-            if (j == i) 
+            if (!foundDivisor)
             { 
                 ans += " " + i; 
                 count++; 
